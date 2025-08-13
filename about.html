@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Me - A 1 3 X 6 0</title> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --accent: #facc15;
+    --text-light: #fff;
+    --secondary-text: #cbd5e1;
+    --bg-gradient: 
+      radial-gradient(circle at 20% 30%, #9333ea, transparent 40%), 
+      radial-gradient(circle at 80% 70%, #3b82f6, transparent 40%), 
+      radial-gradient(circle at 50% 50%, #ec4899, transparent 40%), 
+      #0f172a;
+    --bar-bg: rgba(255 255 255 / 0.15);
+    --bar-fill: #facc15;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0; padding: 0; min-height: 100%;
+    font-family: 'Poppins', sans-serif, Arial, sans-serif;
+    background: var(--bg-gradient);
+    background-size: 200% 200%;
+    animation: bgMove 20s ease infinite;
+    color: var(--text-light);
+  }
+
+  @keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 6vw;
+    font-weight: 700;
+    background: transparent;
+    user-select: none;
+  }
+
+  header h1 {
+    font-size: 2.4rem;
+    letter-spacing: 2.5px;
+  }
+
+  header a.logo-link {
+    color: var(--text-light);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  header a.logo-link:hover,
+  header a.logo-link:focus {
+    color: var(--accent);
+    outline: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 3rem;
+  }
+  nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    background: var(--accent);
+    left: 0;
+    bottom: -6px;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+  nav a:hover, nav a:focus {
+    color: var(--accent);
+  }
+  nav a:hover::after, nav a:focus::after {
+    width: 100%;
+  }
+  nav a[aria-current="page"] {
+    color: var(--accent);
+  }
+  nav a[aria-current="page"]::after {
+    width: 100%;
+  }
+
+  main {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 3vw;
+  }
+
+  .container {
+    max-width: 1100px;
+    background: rgba(255 255 255 / 0.07);
+    border-radius: 24px;
+    box-shadow: 0 0 60px 10px var(--accent);
+    backdrop-filter: blur(15px);
+    border: 3px solid var(--accent);
+    padding: 3rem 4rem;
+    color: var(--secondary-text);
+  }
+
+  .container h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .container h1::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 6px;
+    background: linear-gradient(90deg, #facc15, #ec4899);
+    margin: 15px auto 0 auto;
+    border-radius: 5px;
+    animation: slideInUnderline 1.2s ease forwards;
+  }
+
+  @keyframes slideInUnderline {
+    from { width: 0; opacity: 0; }
+    to { width: 120px; opacity: 1; }
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 2rem auto;
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 20px var(--accent);
+  }
+
+  section.intro, section.skills, section.more-about, section.proficiencies {
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  section.intro h2, section.skills h3, section.more-about h3, section.proficiencies h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  section.intro p, section.more-about p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+  }
+
+  section.skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  section.skills ul li {
+    background: var(--accent);
+    color: #0f172a;
+    padding: 0.6rem 1.3rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 0 10px var(--accent);
+    transition: transform 0.3s ease;
+  }
+  section.skills ul li:hover {
+    transform: scale(1.1);
+    cursor: default;
+  }
+
+  /* Skill proficiency bars */
+  .skill-bar {
+    text-align: left;
+    max-width: 400px;
+    margin: 0.6rem auto 1rem auto;
+  }
+  .skill-bar-label {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    color: var(--accent);
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+  }
+  .bar-bg {
+    background: var(--bar-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 18px;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--bar-fill);
+    border-radius: 15px 0 0 15px;
+    width: 0;
+    transition: width 1.2s ease-in-out;
+  }
+
+  .tagline {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-top: 3rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* Responsive */
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 2rem 2rem;
+    }
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 1.5rem;
+    }
+    section.intro p, section.more-about p {
+      font-size: 1rem;
+    }
+    section.skills ul {
+      gap: 1rem;
+    }
+    section.skills ul li {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    .skill-bar {
+      max-width: 100%;
+      margin: 0.5rem auto 1rem auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    main {
+      padding: 2rem 1rem;
+    }
+    .container {
+      padding: 1.5rem 1.5rem;
+    }
+    .profile-image {
+      width: 100px;
+      height: 100px;
+    }
+    .tagline {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header role="banner">
+  <h1><a href="index.html" class="logo-link" aria-label="Go to homepage">A 1 3 X 6 0</a></h1>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html">HOME</a>
+    <a href="about.html" aria-current="page">ABOUT ME</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<main role="main">
+  <div class="container" aria-label="About Me Section">
+    <h1>About Me</h1>
+    <img src="IMG_1033 (2).JPG" alt="Profile photo of Yon Won" class="profile-image" />
+
+    <section class="intro">
+      <h2>Who I Am</h2>
+      <p>
+        I’m a passionate full stack developer, lifelong learner and problem solver <br> Since I was a kid, I’ve been fascinated by how technology shapes our world which inspired me to start coding at my early age and as today I focus on building clean web applications and exploring new ways to bring ideas to life
+      </p>
+    </section>
+
+    <section class="skills" aria-label="Skills and Expertise">
+      <h3>My Core Skills</h3>
+      <ul id="skill-list" role="list">
+        <li>Full-Stack Development</li>
+        <li>Python</li>
+        <li>UI/UX Design</li>
+        <li>Video Editing</li>
+      </ul>
+    </section>
+
+    <section class="proficiencies" aria-label="Skill proficiency levels">
+      <h3>Skill Proficiency</h3>
+
+      <div class="skill-bar" aria-label="HTML skill level 90 percent">
+        <div class="skill-bar-label">HTML <span>90%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
+      </div>
+
+      <div class="skill-bar" aria-label="CSS skill level 85 percent">
+        <div class="skill-bar-label">CSS <span>85%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
+      </div>
+
+      <div class="skill-bar" aria-label="JavaScript skill level 70 percent">
+        <div class="skill-bar-label">JavaScript <span>70%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
+      </div>
+
+      <div class="skill-bar" aria-label="Python skill level 80 percent">
+        <div class="skill-bar-label">Python <span>80%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
+      </div>
+
+      <div class="skill-bar" aria-label="Video Editing skill level 60 percent">
+        <div class="skill-bar-label">Video Editing <span>60%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
+      </div>
+    </section>
+
+    <section class="more-about">
+      <h3>More About Me</h3>
+      <p>
+        Outside of coding I enjoy trying to know new things...I strongly believe growth happens when you step outside your comfort zone so I’m always open to new challenges and experiences. <br> Whether it’s learning a new programming language or exploring different new things <br> I stay curious and motivated
+      </p>
+    </section>
+
+    <div class="tagline" aria-label="Personal tagline">
+      <p>LIFE DOES NOT GET EASIER . YOU JUST GET STRONGER</p>
+    </div>
+  </div>
+</main>
+
+<script>
+  // Animate skill bars on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    const skillFillWidths = [90, 85, 70, 80, 60]; // Percentages
+
+    const fills = document.querySelectorAll('.bar-fill');
+    fills.forEach((bar, i) => {
+      setTimeout(() => {
+        bar.style.width = skillFillWidths[i] + '%';
+      }, 300 * i);
+    });
+  });
+</script>
+
+</body>
+</html>
