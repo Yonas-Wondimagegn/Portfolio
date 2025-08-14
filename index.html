@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>A 1 3 X 6 0</title>
+<title>A 1 3 X 6 0 </title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
-    --accent: #facc15; /* Ethiopian gold */
+    --accent: #facc15;
     --pos1-x: 20%;
     --pos1-y: 30%;
     --pos2-x: 80%;
@@ -16,10 +16,10 @@
     --pos3-y: 50%;
 
     --bg-gradient: 
-      radial-gradient(circle at var(--pos1-x) var(--pos1-y), #9333ea, transparent 40%), 
-      radial-gradient(circle at var(--pos2-x) var(--pos2-y), #3b82f6, transparent 40%), 
-      radial-gradient(circle at var(--pos3-x) var(--pos3-y), #ec4899, transparent 40%), 
-      #0f172a;
+      radial-gradient(circle at var(--pos1-x) var(--pos1-y), #410679, transparent 20%), 
+      radial-gradient(circle at var(--pos2-x) var(--pos2-y), #0d3576, transparent 30%), 
+      radial-gradient(circle at var(--pos3-x) var(--pos3-y), #6a0e3c, transparent 25%), 
+      #060740;
     --text-light: #fff;
     --secondary-text: #cbd5e1;
 }
@@ -34,17 +34,17 @@ html, body {
     font-family: 'Poppins', sans-serif;
     background: var(--bg-gradient);
     background-size: 200% 200%;
-    animation: bgMove 15s ease infinite;
+    animation: bgMove 10s ease infinite;
     color: var(--text-light);
-    overflow: hidden;  /* fixed no scroll by default */
+    overflow: hidden;  
     height: 100vh;
 }
 
 /* For mobile */
 @media (max-width: 900px) {
     html, body {
-        overflow: auto;  /* allow scrolling */
-        height: auto;    /* let content determine height */
+        overflow: auto;
+        height: auto;
     }
 }
 
@@ -54,32 +54,33 @@ html, body {
     100% { background-position: 0% 50%; }
 }
 
-/* --- Navigation spacing improvements --- */
+/* --- Navigation spacing--- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 6vw; /* increased vertical padding for breathing room */
-    font-weight: 700;
+    padding: 1.5rem 6vw; 
+    font-weight: 1000;
     flex-wrap: wrap;
 }
 header h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.4rem; /* larger */
-    letter-spacing: 2.5px;
+    font-size: 2.7rem;
+    letter-spacing: 3px;
     cursor: default;
     user-select: none;
+    margin-left: -1.5rem;
 }
 nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem; /* more space between nav items */
+    gap: 4rem; 
 }
 nav a {
     text-decoration: none;
     color: var(--text-light);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     position: relative;
     transition: color 0.3s ease;
     white-space: nowrap;
@@ -113,44 +114,43 @@ nav a:hover::after, nav a:focus::after {
     overflow: hidden;
 }
 .hero-text {
-    max-width: 1000px;
+    max-width: 1500px;
     animation: fadeInLeft 1s ease forwards;
     opacity: 0;
     flex: 1 1 320px;
 }
 .hero-text h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
+    font-size: 3.4rem;
     margin-top: 2rem;
-    font-weight: 800;
-    margin-bottom: 0.3rem;
-    letter-spacing: 1.8px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.35);
-}
-.hero-text h2 {
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: var(--accent);
-    margin-top: 1rem;
-    margin-left: 3rem;
-    letter-spacing: 1.2px;
-}
-.hero-text p {
-    margin-top: 1rem;
-    color: #eaeaea;
-    line-height: 1.7;
-    margin: 1.5rem 0 2.5rem;
-    font-size: 1.5rem;
     font-weight: 1000;
+    color: var(--text-light);
+    margin-top: -1rem;
+    margin-bottom: 3rem;
+    letter-spacing: 1.8px;
+    text-shadow: 0 2px 15px rgba(190, 241, 91, 0.35);
+}
+
+.hero-text p {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: 5rem;
+    color: #eaeaea;
+    line-height: 1.6;
+    font-size: 1.6rem;
+    font-weight: 1500;
+    text-shadow: 0 2px 15px rgba(190, 241, 91, 0.35);
+
 }
 .typing {
     color: var(--accent);
-    font-weight: 800;
-    font-size: 3rem;
-    height: 2rem;
-    margin-top: 0.6rem;
-    margin-left: 0.5rem;
-    margin-bottom: 5.5rem;
+    font-weight: 600;
+    font-size: 2.7rem;
+    height: 1rem;
+    margin-top: -1rem;
+    margin-left: 0.1rem;
+    margin-bottom: 5rem;
     letter-spacing: 1.2px;
     min-height: 2.2rem;
 
@@ -159,7 +159,7 @@ nav a:hover::after, nav a:focus::after {
 .buttons {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
 }
 
@@ -168,7 +168,7 @@ nav a:hover::after, nav a:focus::after {
 /* --- Photo enhancement --- */
 .hero-right {
     position: relative;
-    z-index: 3;
+    z-index: 0;
     width: 400px;
     height: 400px;
     display: grid;
@@ -178,7 +178,7 @@ nav a:hover::after, nav a:focus::after {
     position: relative;
     width: 380px;
     height: 380px;
-    border-radius: 50%;
+    border-radius: 75%;
     display: grid;
     place-items: center;
     background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
@@ -192,20 +192,20 @@ nav a:hover::after, nav a:focus::after {
 .profile {
     width: 320px;
     height: 320px;
-    border-radius: 50%;
+    border-radius: 100%;
     overflow: hidden;
     display: block;
     object-fit: cover;
     border: 8px solid transparent;
     padding: 10px;
-    background: conic-gradient(from 180deg at 50% 50%, #9333ea, #ec4899, #3b82f6, #9333ea);
-    box-shadow: 0 8px 32px rgba(147,51,234,0.35), 0 0 100px rgba(99,102,241,0.18);
+    background: conic-gradient(from 180deg at 50% 50%, #81596d, #8b578b, #824fb1);
+    box-shadow: 0 8px 32px rgba(133, 133, 133, 0.35), 0 0 100px rgba(99,102,241,0.18);
     filter: brightness(1.2) contrast(1.15) saturate(1.15) drop-shadow(0 0 10px #9333ea88);
     transition: filter .3s ease, transform .3s ease;
 }
 .profile:hover {
     transform: scale(1.07);
-    filter: brightness(1.3) contrast(1.25) saturate(1.3) drop-shadow(0 0 18px #ec489988);
+    filter: brightness(1) contrast(1.1) saturate(1.3) drop-shadow(0 0 18px #9a869088);
 }
 
 /* neon ring */
@@ -222,8 +222,8 @@ nav a:hover::after, nav a:focus::after {
     color: #000;
     padding: 1.1rem 2.6rem;
     border-radius: 36px;
-    font-weight: 800;
-    font-size: 1.2rem;
+    font-weight: 1000;
+    font-size: 1.3rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
@@ -232,7 +232,7 @@ nav a:hover::after, nav a:focus::after {
 }
 .download-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 28px var(--accent);
+    box-shadow: 0 0 90px var(--accent);
 }
 .social-icons a {
     display: inline-flex;
@@ -241,7 +241,7 @@ nav a:hover::after, nav a:focus::after {
     width: 52px;
     height: 52px;
     background: transparent;
-    border: 2px solid #fff;
+    border: 0.2px solid #ffee00;
     border-radius: 50%;
     color: #fff;
     transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -254,13 +254,13 @@ nav a:hover::after, nav a:focus::after {
 .social-icons a:hover {
     background: var(--accent);
     color: #000;
-    transform: scale(1.15);
+    transform: scale(0.9);
 }
 
 /* Animations */
 @keyframes glow {
     from { box-shadow: 0 0 30px rgba(147, 51, 234, 0.8); }
-    to { box-shadow: 0 0 60px rgba(236, 72, 153, 1); }
+    to { box-shadow: 0 0 60px rgb(118, 2, 60); }
 }
 @keyframes fadeInLeft {
     from { transform: translateX(-60px); opacity: 0; }
@@ -287,11 +287,12 @@ nav a:hover::after, nav a:focus::after {
     .hero-text {
         display: flex;
         flex-direction: column;
-        justify-content: center;  /* vertical center inside hero-text */
+        justify-content: center;  
         height: 100%;
     }
     .hero-text h1 {
-        font-size: 3rem;
+      margin-top: -rem;
+        font-size: 2.5rem;
     }
     .hero-text h2 {
         font-size: 2rem;
@@ -315,16 +316,37 @@ nav a:hover::after, nav a:focus::after {
 }
 
 @media (max-width: 480px) {
+
+  header h1 {
+margin-left: 2rem;
+margin-top: 0.5rem;
+margin-bottom: 2rem;
+}
+  nav {
+    margin-top: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; 
+}
+
+  .hero-text p {
+    margin-top: -.2rem;
+    font-size: larger;
+  }
     .hero-text h1 {
+      margin-bottom: 1rem;
         font-size: 2.4rem;
+        margin-top: -1rem;
     }
     .hero-text h2 {
         font-size: 1.6rem;
     }
     .typing {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
     .download-btn {
+      margin-top: -2rem;
+      margin-bottom: 2rem;
         padding: 0.9rem 2rem;
         font-size: 1.05rem;
     }
@@ -336,9 +358,15 @@ nav a:hover::after, nav a:focus::after {
         width: 22px;
         height: 22px;
     }
+        .profile {
+        width: 290px;
+        height: 290px;
+        margin-top: -4rem;
+        margin-right: 5rem;;
+    }
 }
 
-/* Hide scrollbars but allow scroll */
+/* Hide scrollbars */
 body::-webkit-scrollbar {
     width: 0;
     background: transparent;
@@ -399,7 +427,7 @@ body {
   <div class="hero-text">
     <h1>Yonas Wondimagegn</h1>
     <div class="typing" id="typing"></div>
-    <p>I CAN BUILD SMART CLEAN WEB APP<br>BRINGING IDEAS TO LIFE WITH CODE</p>
+    <p>I CAN BRINGING IDEAS TO LIFE <br> WITH SMART AND CLEAN CODE  </p>
     <div class="buttons">
       <a class="download-btn" href="#" download>DOWNLOAD CV</a>
       <div class="social-icons">
@@ -445,11 +473,11 @@ body {
 
 <script>
 // Typing effect
-const phrases = ['Python Developer', 'Full stack Dev', 'Video Editor', 'Problem Solver'];
+const phrases = ['Python Developer', 'Full stack Developer', 'Graphics Designer', 'Video Editor'];
 let currentPhraseIndex = 0;
 let letterIndex = 0;
 const typingSpeed = 120;
-const erasingSpeed = 60;
+const erasingSpeed = 50;
 const typingElement = document.getElementById('typing');
 
 function type() {
@@ -475,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(type, 1000);
 });
 
-// Mouse-based color movement for background gradients
+// background gradients mouse movement color
 document.addEventListener('mousemove', e => {
   const xPercent = (e.clientX / window.innerWidth) * 100;
   const yPercent = (e.clientY / window.innerHeight) * 100;
@@ -498,4 +526,3 @@ document.addEventListener('mousemove', e => {
 
 </body>
 </html>
-
