@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>A 1 3 X 6 0 - Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+:root {
+  --accent: #facc15;
+  --pos1-x: 20%;
+  --pos1-y: 30%;
+  --pos2-x: 80%;
+  --pos2-y: 70%;
+  --pos3-x: 50%;
+  --pos3-y: 50%;
+  --bg-gradient: 
+    radial-gradient(circle at var(--pos1-x) var(--pos1-y), #593976, transparent 30%), 
+    radial-gradient(circle at var(--pos2-x) var(--pos2-y), #092f00, transparent 40%), 
+    radial-gradient(circle at var(--pos3-x) var(--pos3-y), #0c4361, transparent 35%), 
+    #000934fe;
+  --text-light: #ffffff;
+  --secondary-text: #c5c5c5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  background-size: 200% 200%;
+  animation: bgMove 10s ease infinite;
+  color: var(--text-light);
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* For mobile */
+@media (max-width: 900px) {
+  html, body {
+    overflow-y: auto;
+    height: auto;
+  }
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Navigation --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 6vw; 
+  font-weight: 1000;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn 1s forwards 2.5s;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header h1 {
+  font-size: 2.7rem;
+  letter-spacing: 3px;
+  cursor: default;
+  user-select: none;
+  margin-left: -1.5rem;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem; 
+}
+nav a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2.5px;
+  background: var(--accent);
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+nav a:hover, nav a:focus {
+  color: var(--accent);
+}
+nav a:hover::after, nav a:focus::after {
+  width: 100%;
+}
+nav a.active {
+  color: var(--accent);
+}
+nav a.active::after {
+  width: 100%;
+}
+
+/* Splash Screen / Intro Animation */
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  background: var(--bg-gradient);
+  animation: bgMove 10s ease infinite;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+.splash-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-light);
+  position: absolute;
+  opacity: 0;
+  animation: textIntro 2s ease-in-out forwards 0.5s;
+}
+@keyframes textIntro {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Contact Section --- */
+.contact-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem 4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn 1s forwards 2.5s;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: 2px;
+}
+
+.contact-info p {
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  margin: 0 0 2rem 0;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.2px solid var(--accent); /* Changed border color */
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+.contact-icon {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  fill: white;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-details h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.contact-details span {
+  color: var(--secondary-text);
+  font-size: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  border: 0.2px solid #ffee00;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none; 
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem;
+}
+.social-icons a svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+.social-icons a:hover {
+  transform: scale(0.9);
+  background: var(--accent);
+  color: #000;
+}
+/* Animations */
+@keyframes fadeInLeft {
+  from { transform: translateX(-60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeInRight {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+/* --- Contact Form --- */
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.2px solid var(--accent); /* Changed border color */
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.send-button {
+  background: var(--accent);
+  color: #121212;
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.send-button:hover {
+  background: #121212;
+  color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.logo-link {
+  color: var(--text-light);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+.logo-link:hover,
+.logo-link:focus {
+  color: var(--accent);
+  outline: none;
+}
+</style>
+</head>
+<body>
+
+<div class="splash-container" id="splash">
+  <div class="splash-text">GET IN TOUCH</div>
+</div>
+
+<header>
+  <h1><a href="index.html" class="logo-link">A 1 3 X 6 0</a></h1>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT ME</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contact.html" class="active" aria-current="page">CONTACT</a>
+  </nav>
+</header>
+
+<main class="contact-container">
+  <section class="contact-info">
+    <h2>Get In Touch</h2>
+    <p>Ready to bring your ideas to life? Let's collaborate and create something amazing together.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <a href="mailto:a13x.6ty@gmail.com" aria-label="Email" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <div class="contact-details">
+          <h4>Email</h4>
+          <span>a13x60@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-card">
+        <a href="https://t.me/a13x60" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+        <div class="contact-details">
+          <h4>Telegram</h4>
+          <span>@a13x60</span>
+        </div>
+      </div>
+      <div class="contact-card">
+        <a href="https://twitter.com/a13x6ty" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <div class="contact-details">
+          <h4>Twitter</h4>
+          <span>@a13x60tw</span>
+        </div>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="https://t.me/a13x60" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+      <a href="https://twitter.com/a13x6ty" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="mailto:a13x.6ty@gmail.com" aria-label="Email" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </section>
+  <form class="contact-form">
+    <div class="form-group">
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+      <input type="text" id="subject" name="subject" placeholder="Subject" required>
+    </div>
+    <div class="form-group">
+      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+    </div>
+    <button type="submit" class="send-button">Send Message</button>
+  </form>
+</main>
+
+<script>
+// Hide splash screen after a delay and trigger main content animations
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash');
+  setTimeout(() => {
+    splash.style.opacity = '0';
+    setTimeout(() => {
+      splash.style.display = 'none';
+      document.body.style.overflowY = 'auto'; 
+    }, 1000); 
+  }, 2000); 
+});
+
+// This script enables the automatic background movement
+const root = document.documentElement;
+let t = 0;
+function animateBG() {
+  t += 0.002;
+  const pos1X = 20 + Math.sin(t) * 20;
+  const pos1Y = 30 + Math.cos(t) * 20;
+  const pos2X = 80 + Math.cos(t) * 20;
+  const pos2Y = 70 + Math.sin(t) * 20;
+  const pos3X = 50 + Math.sin(t * 1.5) * 20;
+  const pos3Y = 50 + Math.cos(t * 1.5) * 20;
+
+  root.style.setProperty('--pos1-x', pos1X + '%');
+  root.style.setProperty('--pos1-y', pos1Y + '%');
+  root.style.setProperty('--pos2-x', pos2X + '%');
+  root.style.setProperty('--pos2-y', pos2Y + '%');
+  root.style.setProperty('--pos3-x', pos3X + '%');
+  root.style.setProperty('--pos3-y', pos3Y + '%');
+  requestAnimationFrame(animateBG);
+}
+animateBG();
+
+// Mouse responsive background
+document.addEventListener('mousemove', e => {
+  const xPercent = (e.clientX / window.innerWidth) * 100;
+  const yPercent = (e.clientY / window.innerHeight) * 100;
+  const offsetX1 = 20 + (xPercent - 50) * 0.15;
+  const offsetY1 = 30 + (yPercent - 50) * 0.15;
+  const offsetX2 = 80 + (xPercent - 50) * 0.1;
+  const offsetY2 = 70 + (yPercent - 50) * 0.1;
+  const offsetX3 = 50 + (xPercent - 50) * 0.05;
+  const offsetY3 = 50 + (yPercent - 50) * 0.05;
+
+  root.style.setProperty('--pos1-x', offsetX1 + '%');
+  root.style.setProperty('--pos1-y', offsetY1 + '%');
+  root.style.setProperty('--pos2-x', offsetX2 + '%');
+  root.style.setProperty('--pos2-y', offsetY2 + '%');
+  root.style.setProperty('--pos3-x', offsetX3 + '%');
+  root.style.setProperty('--pos3-y', offsetY3 + '%');
+  });
+</script>
+
+</body>
+</html>
