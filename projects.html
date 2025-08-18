@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>A 1 3 X 6 0 - Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --accent: #facc15;
+  --pos1-x: 20%;
+  --pos1-y: 30%;
+  --pos2-x: 80%;
+  --pos2-y: 70%;
+  --pos3-x: 50%;
+  --pos3-y: 50%;
+  --bg-gradient: 
+    radial-gradient(circle at var(--pos1-x) var(--pos1-y), #593976, transparent 30%), 
+    radial-gradient(circle at var(--pos2-x) var(--pos2-y), #092f00, transparent 40%), 
+    radial-gradient(circle at var(--pos3-x) var(--pos3-y), #0c4361, transparent 35%), 
+    #000934fe;
+  --text-light: #ffffff;
+  --secondary-text: #c5c5c5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  background-size: 200% 200%;
+  animation: bgMove 10s ease infinite;
+  color: var(--text-light);
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* For mobile */
+@media (max-width: 900px) {
+  html, body {
+    overflow-y: auto;
+    height: auto;
+  }
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Navigation --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 6vw; 
+  font-weight: 1000;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn 1s forwards 1.5s;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header h1 {
+  font-size: 2.7rem;
+  letter-spacing: 3px;
+  cursor: default;
+  user-select: none;
+  margin-left: -1.5rem;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem; 
+}
+nav a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2.5px;
+  background: var(--accent);
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+nav a:hover, nav a:focus {
+  color: var(--accent);
+}
+nav a:hover::after, nav a:focus::after {
+  width: 100%;
+}
+nav a.active {
+  color: var(--accent);
+}
+nav a.active::after {
+  width: 100%;
+}
+
+/* Splash Screen / Intro Animation */
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  background: var(--bg-gradient);
+  animation: bgMove 10s ease infinite;
+  transition: opacity 4s ease-in-out;
+  opacity: 1;
+}
+.splash-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-light);
+  position: absolute;
+  opacity: 0;
+  animation: textIntro 2s ease-in-out forwards 0.5s;
+}
+@keyframes textIntro {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* main projects section */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 4vw;
+  opacity: 0;
+  animation: fadeIn 1s forwards 1.5s;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.projects-header h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.projects-header p {
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  margin-top: 10px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* view project button */
+.view-project-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--accent);
+  color: #121212;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+}
+/*hover effect for the button  */
+.view-project-button:hover {
+  background: #121212;
+  color: var(--accent);
+  transform: translate(-50%, -50%) scale(1.1); /* Slightly scales up the button */
+  box-shadow: 0 0 15px var(--accent); /* Adds a subtle glow effect */
+}
+
+.project-card:hover .view-project-button {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.project-content {
+  padding: 20px;
+}
+.project-content h3 {
+  color: var(--accent);
+  font-size: 1.8rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+.project-content p {
+  color: var(--secondary-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto; 
+}
+.tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes textIntro {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  nav {
+    justify-content: center;
+    gap: 1.8rem;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  header h1 {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  nav {
+    gap: 2rem;
+  }
+  .projects-header h2 {
+    font-size: 2.5rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.logo-link {
+  color: var(--text-light);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+.logo-link:hover,
+.logo-link:focus {
+  color: var(--accent);
+  outline: none;
+}
+</style>
+</head>
+<body>
+
+<div class="splash-container" id="splash">
+  <div class="splash-text">MY PROJECTS</div>
+</div>
+
+<header>
+  <h1><a href="index.html" class="logo-link">A 1 3 X 6 0</a></h1>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT ME</a>
+    <a href="projects.html" class="active" aria-current="page">PROJECTS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main class="projects-container">
+  <div class="projects-header">
+    <h2>My Projects</h2>
+    <p>my work across development, design and automation</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-image-wrapper">
+        <img src="assets/projects/lucy.png" alt="Lucy Amharic Chatbot">
+        <a href="#" class="view-project-button">View Project</a>
+      </div>
+      <div class="project-content">
+        <h3>Tafesech Chatbot</h3>
+        <p>An Amharic chatbot designed for smooth natural language conversations....built with AI and NLP to assist users in their native language.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">NLP</span>
+          <span class="tag">API</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image-wrapper">
+        <img src="assets/projects/bg-remover.png" alt="Background Remover Bot">
+        <a href="#" class="view-project-button">View Project</a>
+      </div>
+      <div class="project-content">
+        <h3>Background Remover Bot</h3>
+        <p>A Telegram bot that automatically removes backgrounds from images</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">PIL</span>
+          <span class="tag">Telegram Bot</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image-wrapper">
+        <img src="assets/projects/mag-garment.png" alt="Mag Garment eCommerce Website">
+        <a href="#" class="view-project-button">View Project</a>
+      </div>
+      <div class="project-content">
+        <h3>Mag Garment</h3>
+        <p>a clothing brand website with product listing, shopping cart and integrated design options</p>
+        <div class="project-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">PHP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image-wrapper">
+        <img src="assets/projects/diagon-pack.png" alt="Diaqon Pack">
+        <a href="#" class="view-project-button">View Project</a>
+      </div>
+      <div class="project-content">
+        <h3>Dia'qon Pack</h3>
+        <p>A modern web platform to learn about Ethiopian Orthodox</p>
+        <div class="project-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">JSON</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+// Hide splash screen after a shorter delay to speed up loading
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash');
+  
+  setTimeout(() => {
+    splash.style.opacity = '0';
+    setTimeout(() => {
+      splash.style.display = 'none';
+      document.body.style.overflowY = 'auto'; // Re-enable vertical scrolling
+    }, 1000); // Fades out the splash screen over 0.5 seconds
+  }, 1000); // Starts the fade out after 0.5 seconds
+});
+
+// This script enables the automatic background movement
+const root = document.documentElement;
+let t = 0;
+function animateBG() {
+  t += 0.002;
+  const pos1X = 20 + Math.sin(t) * 20;
+  const pos1Y = 30 + Math.cos(t) * 20;
+  const pos2X = 80 + Math.cos(t) * 20;
+  const pos2Y = 70 + Math.sin(t) * 20;
+  const pos3X = 50 + Math.sin(t * 1.5) * 20;
+  const pos3Y = 50 + Math.cos(t * 1.5) * 20;
+
+  root.style.setProperty('--pos1-x', pos1X + '%');
+  root.style.setProperty('--pos1-y', pos1Y + '%');
+  root.style.setProperty('--pos2-x', pos2X + '%');
+  root.style.setProperty('--pos2-y', pos2Y + '%');
+  root.style.setProperty('--pos3-x', pos3X + '%');
+  root.style.setProperty('--pos3-y', pos3Y + '%');
+  requestAnimationFrame(animateBG);
+}
+animateBG();
+
+// Mouse responsive background
+document.addEventListener('mousemove', e => {
+  const xPercent = (e.clientX / window.innerWidth) * 100;
+  const yPercent = (e.clientY / window.innerHeight) * 100;
+  const offsetX1 = 20 + (xPercent - 50) * 0.15;
+  const offsetY1 = 30 + (yPercent - 50) * 0.15;
+  const offsetX2 = 80 + (xPercent - 50) * 0.1;
+  const offsetY2 = 70 + (yPercent - 50) * 0.1;
+  const offsetX3 = 50 + (xPercent - 50) * 0.05;
+  const offsetY3 = 50 + (yPercent - 50) * 0.05;
+
+  root.style.setProperty('--pos1-x', offsetX1 + '%');
+  root.style.setProperty('--pos1-y', offsetY1 + '%');
+  root.style.setProperty('--pos2-x', offsetX2 + '%');
+  root.style.setProperty('--pos2-y', offsetY2 + '%');
+  root.style.setProperty('--pos3-x', offsetX3 + '%');
+  root.style.setProperty('--pos3-y', offsetY3 + '%');
+});
+</script>
+
+</body>
+</html>
