@@ -2,377 +2,533 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About Me - A 1 3 X 6 0</title> 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>A 1 3 X 6 0 - About Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --accent: #facc15;
-    --text-light: #fff;
-    --secondary-text: #cbd5e1;
-    --bg-gradient: 
-      radial-gradient(circle at 20% 30%, #9333ea, transparent 40%), 
-      radial-gradient(circle at 80% 70%, #3b82f6, transparent 40%), 
-      radial-gradient(circle at 50% 50%, #ec4899, transparent 40%), 
-      #0f172a;
-    --bar-bg: rgba(255 255 255 / 0.15);
-    --bar-fill: #facc15;
-  }
+:root {
+  --accent: #facc15;
+  --pos1-x: 20%;
+  --pos1-y: 30%;
+  --pos2-x: 80%;
+  --pos2-y: 70%;
+  --pos3-x: 50%;
+  --pos3-y: 50%;
+  --bg-gradient: 
+    radial-gradient(circle at var(--pos1-x) var(--pos1-y), #593976, transparent 30%), 
+    radial-gradient(circle at var(--pos2-x) var(--pos2-y), #092f00, transparent 40%), 
+    radial-gradient(circle at var(--pos3-x) var(--pos3-y), #0c4361, transparent 35%), 
+    #000934fe;
+  --text-light: #ffffff;
+  --secondary-text: #c5c5c5;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  html, body {
-    margin: 0; padding: 0; min-height: 100%;
-    font-family: 'Poppins', sans-serif, Arial, sans-serif;
-    background: var(--bg-gradient);
-    background-size: 200% 200%;
-    animation: bgMove 20s ease infinite;
-    color: var(--text-light);
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  background-size: 200% 200%;
+  animation: bgMove 10s ease infinite;
+  color: var(--text-light);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+}
 
-  @keyframes bgMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+/* --- Navigation --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 6vw; 
+  font-weight: 1000;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn 1s forwards 2.5s;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header h1 {
+  font-size: 2.7rem;
+  letter-spacing: 3px;
+  cursor: default;
+  user-select: none;
+  margin-left: -1.5rem;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem; 
+}
+nav a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 1.2rem;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2.5px;
+  background: var(--accent);
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+nav a:hover, nav a:focus {
+  color: var(--accent);
+}
+nav a:hover::after, nav a:focus::after {
+  width: 100%;
+}
+nav a.active {
+  color: var(--accent);
+}
+nav a.active::after {
+  width: 100%;
+}
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 6vw;
-    font-weight: 700;
-    background: transparent;
-    user-select: none;
-  }
+/* Splash Screen / Intro Animation */
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  background: var(--bg-gradient);
+  animation: bgMove 10s ease infinite;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+.splash-photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid transparent;
+  padding: 10px;
+  background: conic-gradient(from 180deg at 50% 50%, #81596d, #8b578b, #824fb1);
+  box-shadow: 0 8px 32px rgba(133, 133, 133, 0.35), 0 0 100px rgba(99,102,241,0.18);
+  filter: brightness(1.2) contrast(1.15) saturate(1.15) drop-shadow(0 0 10px #9333ea88);
+  animation: photoIntro 2s ease-in-out forwards;
+}
+.splash-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-light);
+  position: absolute;
+  opacity: 0;
+  animation: textIntro 2s ease-in-out forwards 0.5s;
+}
+@keyframes photoIntro {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.2) translateY(-250px) translateX(-400px); opacity: 0; }
+}
+@keyframes textIntro {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
-  header h1 {
-    font-size: 2.4rem;
-    letter-spacing: 2.5px;
-  }
+/* About Sections */
+.scroll-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4vw;
+  scroll-snap-type: y mandatory; /* Enables smooth, page-by-page scrolling */
+}
 
-  header a.logo-link {
-    color: var(--text-light);
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  header a.logo-link:hover,
-  header a.logo-link:focus {
-    color: var(--accent);
-    outline: none;
-  }
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 100px; 
+  scroll-snap-align: start; /* Defines the snap point for each section */
+}
 
+.section-title {
+  font-size: 2.7rem;
+  letter-spacing: 1.8px;
+  font-weight: 1000;
+  color: var(--text-light);
+  text-transform: uppercase;
+  position: sticky;
+  top: 90px;
+  z-index: 5;
+  background: transparent;
+  transition: all 0.3s ease;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+.section-title.active-glow {
+  color: var(--accent);
+  text-shadow: 0 0 15px var(--accent);
+}
+
+.section-content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  width: 100%;
+}
+.section-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific styling for the first section to position its content higher */
+#about-me-section {
+  justify-content: flex-start;
+  padding-top: 25vh; /* This pushes the content down, centering it better */
+}
+
+.about-text p {
+  text-align: justify;
+  text-align-last: left;
+
+  color: #eaeaea;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0 auto 1rem;
+  max-width: 800px; 
+  hyphens: auto;            
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.skill-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.skill-card h3 {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.skill-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.skill-card li {
+  color: var(--secondary-text);
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.experience-items {
+  width: 100%;
+  max-width: 800px;
+}
+.experience-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.experience-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.experience-item h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+}
+.experience-item p {
+  color: var(--secondary-text);
+  font-size: 1rem;
+  margin: 5px 0 0 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes photoIntro {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.2) translateY(-250px) translateX(-400px); opacity: 0; }
+}
+@keyframes textIntro {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
   nav {
-    display: flex;
-    gap: 3rem;
-  }
-  nav a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-  nav a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2.5px;
-    background: var(--accent);
-    left: 0;
-    bottom: -6px;
-    transition: width 0.3s ease;
-    border-radius: 2px;
-  }
-  nav a:hover, nav a:focus {
-    color: var(--accent);
-  }
-  nav a:hover::after, nav a:focus::after {
-    width: 100%;
-  }
-  nav a[aria-current="page"] {
-    color: var(--accent);
-  }
-  nav a[aria-current="page"]::after {
-    width: 100%;
-  }
-
-  main {
-    flex: 1 1 auto;
-    display: flex;
     justify-content: center;
-    padding: 3rem 3vw;
+    gap: 1.8rem;
+    width: 100%;
   }
-
-  .container {
-    max-width: 1100px;
-    background: rgba(255 255 255 / 0.07);
-    border-radius: 24px;
-    box-shadow: 0 0 60px 10px var(--accent);
-    backdrop-filter: blur(15px);
-    border: 3px solid var(--accent);
-    padding: 3rem 4rem;
-    color: var(--secondary-text);
+  .about-section {
+    padding-top: 120px;
   }
-
-  .container h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--accent);
-    letter-spacing: 5px;
-    text-align: center;
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  #about-me-section {
+    padding-top: 20vh;
+  }
+}
+@media (max-width: 480px) {
+  header h1 {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
     margin-bottom: 2rem;
-    position: relative;
   }
-  .container h1::after {
-    content: "";
-    display: block;
-    width: 120px;
-    height: 6px;
-    background: linear-gradient(90deg, #facc15, #ec4899);
-    margin: 15px auto 0 auto;
-    border-radius: 5px;
-    animation: slideInUnderline 1.2s ease forwards;
-  }
-
-  @keyframes slideInUnderline {
-    from { width: 0; opacity: 0; }
-    to { width: 120px; opacity: 1; }
-  }
-
-  .profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 2rem auto;
-    border: 4px solid var(--accent);
-    box-shadow: 0 0 20px var(--accent);
-  }
-
-  section.intro, section.skills, section.more-about, section.proficiencies {
-    margin-bottom: 2.5rem;
-    text-align: center;
-  }
-
-  section.intro h2, section.skills h3, section.more-about h3, section.proficiencies h3 {
-    color: var(--accent);
-    margin-bottom: 1rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
-
-  section.intro p, section.more-about p {
-    font-size: 1.3rem;
-    line-height: 1.7;
-  }
-
-  section.skills ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+  nav {
     gap: 2rem;
-    flex-wrap: wrap;
   }
-  section.skills ul li {
-    background: var(--accent);
-    color: #0f172a;
-    padding: 0.6rem 1.3rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    font-size: 1rem;
-    box-shadow: 0 0 10px var(--accent);
-    transition: transform 0.3s ease;
+  .section-title {
+    font-size: 2rem;
+    top: 70px;
   }
-  section.skills ul li:hover {
-    transform: scale(1.1);
-    cursor: default;
+  #about-me-section {
+    padding-top: 15vh;
   }
+}
 
-  /* Skill proficiency bars */
-  .skill-bar {
-    text-align: left;
-    max-width: 400px;
-    margin: 0.6rem auto 1rem auto;
-  }
-  .skill-bar-label {
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-    color: var(--accent);
-    display: flex;
-    justify-content: space-between;
-    font-family: monospace;
-  }
-  .bar-bg {
-    background: var(--bar-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    height: 18px;
-  }
-  .bar-fill {
-    height: 100%;
-    background: var(--bar-fill);
-    border-radius: 15px 0 0 15px;
-    width: 0;
-    transition: width 1.2s ease-in-out;
-  }
-
-  .tagline {
-    font-style: italic;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--accent);
-    margin-top: 3rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  /* Responsive */
-
-  @media (max-width: 768px) {
-    .container {
-      padding: 2rem 2rem;
-    }
-    .profile-image {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 1.5rem;
-    }
-    section.intro p, section.more-about p {
-      font-size: 1rem;
-    }
-    section.skills ul {
-      gap: 1rem;
-    }
-    section.skills ul li {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-    }
-    .skill-bar {
-      max-width: 100%;
-      margin: 0.5rem auto 1rem auto;
-    }
-  }
-
-  @media (max-width: 480px) {
-    main {
-      padding: 2rem 1rem;
-    }
-    .container {
-      padding: 1.5rem 1.5rem;
-    }
-    .profile-image {
-      width: 100px;
-      height: 100px;
-    }
-    .tagline {
-      font-size: 1rem;
-    }
-  }
+.logo-link {
+  color: var(--text-light);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+.logo-link:hover,
+.logo-link:focus {
+  color: var(--accent);
+  outline: none;
+}
 </style>
 </head>
 <body>
 
-<header role="banner">
-  <h1><a href="index.html" class="logo-link" aria-label="Go to homepage">A 1 3 X 6 0</a></h1>
-  <nav role="navigation" aria-label="Primary navigation">
+<div class="splash-container" id="splash">
+  <img class="splash-photo" src="IMG_1033 (2).JPG" alt="Profile Photo">
+  <div class="splash-text">ABOUT ME</div>
+</div>
+
+<header>
+  <h1><a href="index.html" class="logo-link">A 1 3 X 6 0</a></h1>
+  <nav>
     <a href="index.html">HOME</a>
-    <a href="about.html" aria-current="page">ABOUT ME</a>
+    <a href="about.html" class="active" aria-current="page">ABOUT ME</a>
     <a href="projects.html">PROJECTS</a>
     <a href="contact.html">CONTACT</a>
   </nav>
 </header>
 
-<main role="main">
-  <div class="container" aria-label="About Me Section">
-    <h1>About Me</h1>
-    <img src="IMG_1033 (2).JPG" alt="Profile photo of Yon Won" class="profile-image" />
+<main class="scroll-container">
+  <section class="about-section" id="about-me-section">
+    <h2 class="section-title">ABOUT ME</h2>
+    <div class="about-text section-content" id="about-me-content">
+          <p>So I’m <strong>Yonas Wondimagegn</strong>, a developer who loves exploring new things in the world we live in. My journey with computers started since I was a kid I’ve been fascinated by how technology shapes our world which inspired me to start coding at my early age and as today I focus on building clean web applications and exploring new ways to bring ideas to life
+          </p>
 
-    <section class="intro">
-      <h2>Who I Am</h2>
-      <p>
-        I’m a passionate full stack developer, lifelong learner and problem solver <br> Since I was a kid, I’ve been fascinated by how technology shapes our world which inspired me to start coding at my early age and as today I focus on building clean web applications and exploring new ways to bring ideas to life
-      </p>
-    </section>
-
-    <section class="skills" aria-label="Skills and Expertise">
-      <h3>My Core Skills</h3>
-      <ul id="skill-list" role="list">
-        <li>Full-Stack Development</li>
-        <li>Python</li>
-        <li>UI/UX Design</li>
-        <li>Video Editing</li>
-      </ul>
-    </section>
-
-    <section class="proficiencies" aria-label="Skill proficiency levels">
-      <h3>Skill Proficiency</h3>
-
-      <div class="skill-bar" aria-label="HTML skill level 90 percent">
-        <div class="skill-bar-label">HTML <span>90%</span></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
-      </div>
-
-      <div class="skill-bar" aria-label="CSS skill level 85 percent">
-        <div class="skill-bar-label">CSS <span>85%</span></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
-      </div>
-
-      <div class="skill-bar" aria-label="JavaScript skill level 70 percent">
-        <div class="skill-bar-label">JavaScript <span>70%</span></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
-      </div>
-
-      <div class="skill-bar" aria-label="Python skill level 80 percent">
-        <div class="skill-bar-label">Python <span>80%</span></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
-      </div>
-
-      <div class="skill-bar" aria-label="Video Editing skill level 60 percent">
-        <div class="skill-bar-label">Video Editing <span>60%</span></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:0;"></div></div>
-      </div>
-    </section>
-
-    <section class="more-about">
-      <h3>More About Me</h3>
-      <p>
-        Outside of coding I enjoy trying to know new things...I strongly believe growth happens when you step outside your comfort zone so I’m always open to new challenges and experiences. <br> Whether it’s learning a new programming language or exploring different new things <br> I stay curious and motivated
-      </p>
-    </section>
-
-    <div class="tagline" aria-label="Personal tagline">
-      <p>LIFE DOES NOT GET EASIER . YOU JUST GET STRONGER</p>
+    <p>I’m passionate, eager to learn, and always give 100% to whatever I start. Today, I’m focused on mastering web development and Python, with a vision of building startups and AI-driven solutions that can deliver high-end products for Ethiopia.</p>
+</p>
     </div>
+  </section>
+  
+  <section class="about-section" id="skills-section">
+    <h2 class="section-title">MY SKILLS</h2>
+    <div class="skills-grid section-content" id="skills-content">
+      <div class="skill-card">
+        <h3>Development</h3>
+        <ul>
+          <li>HTML & CSS</li>
+          <li>Python & Django</li>
+          <li>ML AND NLP</li>
+          <li>Rest API</li>
+          <li>CustomTkinter GUI apps</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+    <h3>Data & Tools</h3>
+        <ul>
+          <li>PANDAS & NUMPY</li>
+          <li>OpenCV</li>
+          <li>TensorFlow</li>
+          <li>REST API Integration</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Video & Graphics Design</h3>
+        <ul>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Premiere Pro</li>
+          <li>Simple Motion Graphics</li>
+          <li>UI/UX Design</li>
+          <li>Davinci Resolve</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<section class="about-section" id="experience-section">
+  <h2 class="section-title">EXPERIENCE</h2>
+  <div class="experience-items section-content" id="experience-content">
+
+    <div class="experience-item">
+      <h3>Early Tech Journey</h3>
+      <p>2013 - 2015</p>
+      <p>Got my first computer at age 10 and became fascinated by how it worked. By 12, I was experimenting with basic HTML & CSS to create simple websites for myself and discovered how much I enjoyed building things with code.</p>
+    </div>
+
+    <div class="experience-item">
+      <h3>Junior Frontend Developer</h3>
+      <p>2016 - 2017</p>
+      <p>At 14, I started learning JavaScript and became a junior-level frontend developer. This step grew my love for coding and gave me confidence in creating more interactive websites.</p>
+    </div>
+
+    <div class="experience-item">
+      <h3>Junior Backend Developer</h3>
+      <p>2018 - 2019</p>
+      <p>During 9th grade, I explored backend development and built a school website to manage books, students’ names, and IDs. Although I planned to scale it further, the project was paused due to the COVID-19 pandemic. This experience taught me dedication and problem-solving early on.</p>
+    </div>
+
+    <div class="experience-item">
+      <h3>Python Developer</h3>
+      <p>2020 - Present</p>
+      <p>In 10th grade, my interest in robotics and machine learning led me to Python — which quickly became my favorite language. Since then, I’ve focused on learning Python day by day, growing strong in automation, ML basics, and practical projects. Today, I’m working toward becoming a full-stack developer while mastering Python for ML and automation systems.</p>
+    </div>
+
   </div>
+</section>
+
 </main>
 
 <script>
-  // Animate skill bars on page load
-  window.addEventListener('DOMContentLoaded', () => {
-    const skillFillWidths = [90, 85, 70, 80, 60]; // Percentages
+// Hide splash screen after a delay and trigger main content animations
+window.addEventListener('load', () => {
+  const splash = document.getElementById('splash');
+  const aboutMeContent = document.getElementById('about-me-content');
 
-    const fills = document.querySelectorAll('.bar-fill');
-    fills.forEach((bar, i) => {
-      setTimeout(() => {
-        bar.style.width = skillFillWidths[i] + '%';
-      }, 300 * i);
+  setTimeout(() => {
+    splash.style.opacity = '0';
+    setTimeout(() => {
+      splash.style.display = 'none';
+      initializeScrollObservers();
+    }, 1000); 
+  }, 2000); 
+});
+
+function initializeScrollObservers() {
+  // IntersectionObserver for content sections (about, skills, experience)
+  const contentObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
     });
+  }, {
+    threshold: 0.5, // Trigger when 50% of the content is visible
   });
+
+  document.querySelectorAll('.section-content').forEach(section => {
+    contentObserver.observe(section);
+  });
+
+  // IntersectionObserver for the skills title to add the "glow" effect
+  const skillsTitleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const skillsTitle = document.querySelector('#skills-section .section-title');
+      if (entry.isIntersecting) {
+        skillsTitle.classList.add('active-glow');
+      } else {
+        skillsTitle.classList.remove('active-glow');
+      }
+    });
+  }, {
+    threshold: 0.5,
+  });
+
+  skillsTitleObserver.observe(document.getElementById('skills-section'));
+}
+
+// This script enables the automatic background movement
+const root = document.documentElement;
+let t = 0;
+function animateBG() {
+  t += 0.002;
+  const pos1X = 20 + Math.sin(t) * 20;
+  const pos1Y = 30 + Math.cos(t) * 20;
+  const pos2X = 80 + Math.cos(t) * 20;
+  const pos2Y = 70 + Math.sin(t) * 20;
+  const pos3X = 50 + Math.sin(t * 1.5) * 20;
+  const pos3Y = 50 + Math.cos(t * 1.5) * 20;
+
+  root.style.setProperty('--pos1-x', pos1X + '%');
+  root.style.setProperty('--pos1-y', pos1Y + '%');
+  root.style.setProperty('--pos2-x', pos2X + '%');
+  root.style.setProperty('--pos2-y', pos2Y + '%');
+  root.style.setProperty('--pos3-x', offsetX3 + '%');
+  root.style.setProperty('--pos3-y', offsetY3 + '%');
+  requestAnimationFrame(animateBG);
+}
+animateBG();
+
+// Mouse responsive background
+document.addEventListener('mousemove', e => {
+  const xPercent = (e.clientX / window.innerWidth) * 100;
+  const yPercent = (e.clientY / window.innerHeight) * 100;
+  const offsetX1 = 20 + (xPercent - 50) * 0.15;
+  const offsetY1 = 30 + (yPercent - 50) * 0.15;
+  const offsetX2 = 80 + (xPercent - 50) * 0.1;
+  const offsetY2 = 70 + (yPercent - 50) * 0.1;
+  const offsetX3 = 50 + (xPercent - 50) * 0.05;
+  const offsetY3 = 50 + (yPercent - 50) * 0.05;
+
+  root.style.setProperty('--pos1-x', offsetX1 + '%');
+  root.style.setProperty('--pos1-y', offsetY1 + '%');
+  root.style.setProperty('--pos2-x', offsetX2 + '%');
+  root.style.setProperty('--pos2-y', offsetY2 + '%');
+  root.style.setProperty('--pos3-x', offsetX3 + '%');
+  root.style.setProperty('--pos3-y', offsetY3 + '%');
+});
 </script>
 
 </body>
